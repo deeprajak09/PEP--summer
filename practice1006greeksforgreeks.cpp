@@ -338,6 +338,39 @@ int main() {
 }
 
 //Q20. Write a Program to Print the Array After It Is Right Rotated K Times.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};
+    int n = 5;
+    int k = 2;          // right rotate by 2
+    int temp[5];
+
+    
+    int j = 0;
+    for (int i = n - k; i < n; i++) {
+        temp[j] = arr[i];
+        j++;
+    }
+ 
+    for (int i = 0; i < n - k; i++) {
+        temp[j] = arr[i];
+        j++;
+    }
+
+    
+    for (int i = 0; i < n; i++) {
+        arr[i] = temp[i];
+    }
+
+   
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
 
 //Q21. Write a Program to Compute the Sum of Diagonals of a Matrix.
 //Q22.Write a Program to Rotate the Elements of a Matrix.
