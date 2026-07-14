@@ -827,3 +827,305 @@ int main(){
     cout<<"the value of x is "<<x;
     return 0;
 }
+
+//Q33. Write a Program for Decimal to Octal Conversion.
+ 
+#include <iostream>
+using namespace std;
+
+ 
+void decToOctal(int n)
+{
+   
+    int octalNum[100];
+
+   
+    int i = 0;
+    while (n != 0) {
+        
+        octalNum[i] = n % 8;
+        n = n / 8;
+        i++;
+    }
+
+     
+    for (int j = i - 1; j >= 0; j--)
+        cout << octalNum[j];
+}
+
+ 
+int main()
+{
+    int n = 33;
+
+     
+    decToOctal(n);
+
+    return 0;
+}
+
+//Q34. Write a Program to Sort an Array (Bubble Sort).
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    int arr[n];
+
+    cout << "Enter the elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+
+//Q35. Write a Program to Search an Element in an Array (Binary Search).
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, key;
+
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    int arr[n];
+
+    cout << "Enter the elements in sorted order: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    cout << "Enter the element to search: ";
+    cin >> key;
+
+    int low = 0, high = n - 1;
+    int found = -1;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+
+        if (arr[mid] == key) {
+            found = mid;
+            break;
+        }
+        else if (arr[mid] < key) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+
+    if (found != -1)
+        cout << "Element found at index " << found;
+    else
+        cout << "Element not found.";
+
+    return 0;
+}
+
+//Q36. Write a Program of Merge Sort.
+#include <iostream>
+using namespace std;
+
+void merge(int arr[], int l, int m, int r) {
+    int temp[100];
+    int i = l;
+    int j = m + 1;
+    int k = l;
+
+    while (i <= m && j <= r) {
+        if (arr[i] < arr[j])
+            temp[k++] = arr[i++];
+        else
+            temp[k++] = arr[j++];
+    }
+
+    while (i <= m)
+        temp[k++] = arr[i++];
+
+    while (j <= r)
+        temp[k++] = arr[j++];
+
+    for (int i = l; i <= r; i++)
+        arr[i] = temp[i];
+}
+
+void mergeSort(int arr[], int l, int r) {
+    if (l < r) {
+        int m = (l + r) / 2;
+
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+
+        merge(arr, l, m, r);
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter size: ";
+    cin >> n;
+
+    int arr[100];
+
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+
+    mergeSort(arr, 0, n - 1);
+
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+
+    return 0;
+}
+
+//Q37. Write a Program to Sort a String.
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str;
+
+    cout << "Enter a string: ";
+    cin >> str;
+
+    // Bubble Sort
+    for (int i = 0; i < str.length() - 1; i++) {
+        for (int j = 0; j < str.length() - i - 1; j++) {
+            if (str[j] > str[j + 1]) {
+                char temp = str[j];
+                str[j] = str[j + 1];
+                str[j + 1] = temp;
+            }
+        }
+    }
+
+    cout << "Sorted string: " << str;
+
+    return 0;
+}
+
+//Q38. Write a Program to Store Information of a Student in a Structure.
+#include <iostream>
+using namespace std;
+
+struct Student {
+    int roll;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    Student s;
+
+    cout << "Enter Roll Number: ";
+    cin >> s.roll;
+
+    cout << "Enter Name: ";
+    cin >> s.name;
+
+    cout << "Enter Marks: ";
+    cin >> s.marks;
+
+    cout << "\nStudent Information\n";
+    cout << "Roll Number: " << s.roll << endl;
+    cout << "Name: " << s.name << endl;
+    cout << "Marks: " << s.marks << endl;
+
+    return 0;
+}
+//Q39. Write a Program to Add Two Complex Numbers.
+#include <iostream>
+using namespace std;
+
+struct Complex {
+    int real;
+    int imag;
+};
+
+int main() {
+    Complex c1, c2, sum;
+
+    cout << "Enter first complex number (real imaginary): ";
+    cin >> c1.real >> c1.imag;
+
+    cout << "Enter second complex number (real imaginary): ";
+    cin >> c2.real >> c2.imag;
+
+    sum.real = c1.real + c2.real;
+    sum.imag = c1.imag + c2.imag;
+
+    cout << "Sum = " << sum.real << " + " << sum.imag << "i";
+
+    return 0;
+}
+//Q40. Write a Program to Create an Interface.
+#include <iostream>
+using namespace std;
+
+ 
+class Animal {
+public:
+    virtual void sound() = 0;    
+};
+ 
+class Dog : public Animal {
+public:
+    void sound() {
+        cout << "Dog barks";
+    }
+};
+
+int main() {
+    Dog d;
+    d.sound();
+
+    return 0;
+}
+
+//Q41. Write a Program to Create a New File.
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream file("student.txt");   
+
+    if (file) {
+        cout << "File created successfully.";
+    } else {
+        cout << "Error creating file.";
+    }
+
+    file.close();
+
+    return 0;
+}
+
